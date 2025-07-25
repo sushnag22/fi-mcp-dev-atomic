@@ -58,4 +58,5 @@ func (m *AuthMiddleware) getLoginUrl(sessionId string) string {
 
 func (m *AuthMiddleware) AddSession(sessionId, phoneNumber string) {
 	m.sessionStore[sessionId] = phoneNumber
+	fmt.Printf("Added number %s to session %s", phoneNumber, sessionId)
 }
