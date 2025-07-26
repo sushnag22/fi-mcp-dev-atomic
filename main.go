@@ -11,6 +11,7 @@ import (
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 
+	"github.com/epifi/fi-mcp-lite/controllers"
 	"github.com/epifi/fi-mcp-lite/middlewares"
 	"github.com/epifi/fi-mcp-lite/pkg"
 )
@@ -44,6 +45,7 @@ func main() {
 	httpMux.Handle("/mcp/", streamableServer)
 	httpMux.HandleFunc("/mockWebPage", webPageHandler)
 	httpMux.HandleFunc("/login", loginHandler)
+	httpMux.HandleFunc("/health", controllers.HealthCheck)
 	port := pkg.GetPort()
 	log.Println("starting server on port:", port)
 	if servErr := http.ListenAndServe(fmt.Sprintf(":%s", port), httpMux); servErr != nil {
