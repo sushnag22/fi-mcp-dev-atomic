@@ -8,5 +8,8 @@ func GetPort() string {
 	if port := os.Getenv("FI_MCP_PORT"); port != "" {
 		return port
 	}
+	if port := os.Getenv("PORT"); port != "" {
+		return port
+	}
 	return "8080"
 }
